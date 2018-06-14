@@ -11,7 +11,7 @@ module.exports = {
   resolve: {
     extensions: [".webpack.js", ".web.js", ".ts", ".vue", ".js", ".jsx"]
   },
-  mode: "production",
+  mode: "development",
   module: {
     rules: [
       {
