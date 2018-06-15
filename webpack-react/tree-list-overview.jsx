@@ -2035,8 +2035,8 @@ import TreeList, {
 } from 'devextreme-react/ui/tree-list';
 
 const dataSource = {
-    store: tasks.map(function(task) {
-        employees.forEach(function(employee) {
+    store: tasks.map(function (task) {
+        employees.forEach(function (employee) {
             if (task.Task_Assigned_Employee_ID === employee.ID) {
                 task.Task_Assigned_Employee = employee;
             }
@@ -2045,22 +2045,23 @@ const dataSource = {
     })
 };
 
-const renderEmployee = (options) => {
+function renderEmployee(options) {
     const employee = options.data.Task_Assigned_Employee;
     if (!employee) {
-        return <span className='name'>not assigned</span>;
+        return <span className={'name'}>not assigned</span>;
     }
 
     return (
         <React.Fragment>
-            <div
-                className='img'
-                style={{ backgroundImage: 'url(' +  employee.Picture + ')' }}
-            />
-            <span className='name'>{employee.Name}</span>
+            <div className={'img'} style={{ backgroundImage: 'url(' + employee.Picture + ')' }} />
+            <span className={'name'}>{employee.Name}</span>
         </React.Fragment>
     );
 };
+
+function customizeTaskCompletionText(cellInfo) {
+    return cellInfo.valueText + '%';
+}
 
 const employeeLookup = {
     dataSource: employees,
@@ -2089,56 +2090,56 @@ export default class extends React.Component {
         return (
             <TreeList
                 dataSource={dataSource}
-                expandedRowKeys={[ 1, 2 ]}
+                expandedRowKeys={[1, 2]}
                 selectedRowKeys={[1, 29, 42]}
-                keyExpr='Task_ID'
-                parentIdExpr='Task_Parent_ID'
+                keyExpr={'Task_ID'}
+                parentIdExpr={'Task_Parent_ID'}
             >
                 <SearchPanel visible={true} width={250} />
                 <HeaderFilter visible={true} />
-                <Selection mode='multiple' />
+                <Selection mode={'multiple'} />
                 <ColumnChooser enabled={true} />
 
-                <Column dataField='Task_Subject' minWidth={250} />
+                <Column dataField={'Task_Subject'} minWidth={250} />
                 <Column
-                    dataField='Task_Assigned_Employee_ID'
-                    caption='Assigned'
+                    dataField={'Task_Assigned_Employee_ID'}
+                    caption={'Assigned'}
                     allowSorting={true}
                     minWidth={200}
-                    cellTemplate='employeeTemplate'
+                    cellTemplate={'employeeTemplate'}
                     lookup={employeeLookup}
                 />
                 <Column
-                    dataField='Task_Status'
-                    caption='Status'
+                    dataField={'Task_Status'}
+                    caption={'Status'}
                     minWidth={100}
                     lookup={statusLookup}
                 />
                 <Column
-                    dataField='Task_Priority'
-                    caption='Priority'
+                    dataField={'Task_Priority'}
+                    caption={'Priority'}
                     lookup={statusLookup}
                     visible={false}
                 />
                 <Column
-                    dataField='Task_Completion'
-                    caption='% Completed'
+                    dataField={'Task_Completion'}
+                    caption={'% Completed'}
                     minWidth={100}
-                    customizeText={(cellInfo) => cellInfo.valueText + '%'}
+                    customizeText={customizeTaskCompletionText}
                     visible={false}
                 />
                 <Column
-                    dataField='Task_Start_Date'
-                    caption='Start Date'
-                    dataType='date'
+                    dataField={'Task_Start_Date'}
+                    caption={'Start Date'}
+                    dataType={'date'}
                 />
                 <Column
-                    dataField='Task_Due_Date'
-                    caption='Due Date'
-                    dataType='date'
+                    dataField={'Task_Due_Date'}
+                    caption={'Due Date'}
+                    dataType={'date'}
                 />
 
-                <Template name='employeeTemplate' render={renderEmployee} />
+                <Template name={'employeeTemplate'} render={renderEmployee} />
             </TreeList>
         );
     }
