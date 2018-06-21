@@ -190,8 +190,8 @@ function Logo(props) {
         <div
             className={'picture-container'}
             style={{
-                'outline-style': props.border ? 'solid' : 'none',
-                'outline-color': props.color
+                outlineStyle: props.border ? 'solid' : 'none',
+                outlineColor: props.color
             }}
         >
             <div
