@@ -33,7 +33,7 @@ const totalCount = data.reduce(function(prevValue, item) {
 }, 0);
 let cumulativeCount = 0;
 
-const dataSource = data.map(function(item) {
+const dataArray = data.map(function(item) {
     cumulativeCount += item.count;
     return {
         complaint: item.complaint,
@@ -66,10 +66,10 @@ export default class extends React.Component {
 
     render() {
         return (
-            <Chart title={'Pizza Shop Complaints'} dataSource={dataSource} palette={'Harmony Light'} >
+            <Chart title={'Pizza Shop Complaints'} dataSource={dataArray} palette={'Harmony Light'} >
 
                 <ArgumentAxis>
-                    <ArgumentAxisLabel overlappingBehavior='stagger' />
+                    <ArgumentAxisLabel overlappingBehavior={'stagger'} />
                 </ArgumentAxis>
 
                 <ValueAxis name={'frequency'} position={'left'} tickInterval={300} />

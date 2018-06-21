@@ -1190,12 +1190,8 @@ const data = [{
 import * as React from 'react';
 
 import ArrayStore from 'devextreme/data/array_store';
-
-import List, {
-} from 'devextreme-react/ui/list';
-
-import TileView, {
-} from 'devextreme-react/ui/tile-view';
+import List from 'devextreme-react/ui/list';
+import TileView from 'devextreme-react/ui/tile-view';
 
 const dataSourceOptions = {
     store: new ArrayStore({
@@ -1206,28 +1202,30 @@ const dataSourceOptions = {
     searchExpr: ['Hotel_Name', 'City', 'Address']
 };
 
-const currencyFormatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-});
+const currencyFormatter = new Intl.NumberFormat(
+    'en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }
+);
 
 function renderListGroup(group) {
-    return <div className='city'>{group.key}</div>;
+    return <div className={'city'}>{group.key}</div>;
 }
 
 function renderListItem(item) {
     return (
         <div>
-            <div className='hotel'>
-                <div className='name'>{item.Hotel_Name}</div>
-                <div className='address'>{item.Postal_Code + ', ' + item.Address}</div>
+            <div className={'hotel'}>
+                <div className={'name'}>{item.Hotel_Name}</div>
+                <div className={'address'}>{item.Postal_Code + ', ' + item.Address}</div>
                 <div className={'type ' + item.Hotel_Class.toLowerCase()} />
             </div>
-            <div className='price-container'>
-                <div className='price'>{currencyFormatter.format(item.Price)}</div>
-                <div className='caption'>per<br />night</div>
+            <div className={'price-container'}>
+                <div className={'price'}>{currencyFormatter.format(item.Price)}</div>
+                <div className={'caption'}>per<br />night</div>
             </div>
         </div>
     );
@@ -1258,13 +1256,13 @@ export default class extends React.Component {
         const currentHotel = this.state.currentHotel;
         return (
             <React.Fragment>
-                <div className='left'>
+                <div className={'left'}>
                     <List
                         selectionMode={'single'}
                         dataSource={dataSourceOptions}
                         grouped={true}
                         searchEnabled={true}
-                        selectedItemKeys={[this.state.currentHotel]}
+                        selectedItemKeys={[currentHotel.Id]}
                         onSelectionChanged={this.handleListSelectionChange}
                         itemRender={renderListItem}
                         groupRender={renderListGroup}
@@ -1273,14 +1271,14 @@ export default class extends React.Component {
                 </div>
 
                 <div className={'right'}>
-                    <div className='header'>
-                        <div className='name-container'>
-                            <div className='name'>{currentHotel.Hotel_Name}</div>
-                            <div className={'type ' + this.state.currentHotel.Hotel_Class.toLowerCase()} />
+                    <div className={'header'}>
+                        <div className={'name-container'}>
+                            <div className={'name'}>{currentHotel.Hotel_Name}</div>
+                            <div className={'type ' + currentHotel.Hotel_Class.toLowerCase()} />
                         </div>
-                        <div className='price-container'>
-                            <div className='price'>{currencyFormatter.format(currentHotel.Price)}</div>
-                            <div className='caption'>per<br />night</div>
+                        <div className={'price-container'}>
+                            <div className={'price'}>{currencyFormatter.format(currentHotel.Price)}</div>
+                            <div className={'caption'}>per<br />night</div>
                         </div>
                     </div>
 
@@ -1290,13 +1288,13 @@ export default class extends React.Component {
                         baseItemHeight={100}
                         baseItemWidth={137}
                         itemMargin={12}
-                        noDataText=''
+                        noDataText={''}
                         itemRender={renderTile}
                         elementAttr={{ class: 'tile' }}
                     />
 
-                    <div className='address'>{currentHotel.Postal_Code}, {currentHotel.Address}</div>
-                    <div className='description'>{currentHotel.Description}</div>
+                    <div className={'address'}>{currentHotel.Postal_Code}, {currentHotel.Address}</div>
+                    <div className={'description'}>{currentHotel.Description}</div>
                 </div>
             </React.Fragment>
         );

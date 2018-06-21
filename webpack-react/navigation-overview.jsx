@@ -1,9 +1,3 @@
-// tslint:disable:only-arrow-functions
-// tslint:disable:object-literal-shorthand
-// tslint:disable:quotemark
-// tslint:disable:object-literal-key-quotes
-
-// tslint:disable:max-line-length
 // #region data.js
 const continents = [{
     id: "1",
@@ -463,28 +457,24 @@ const continents = [{
     }]
 }];
 // #endregion
-// tslint:enable:max-line-length
 import * as React from 'react';
 
-import TreeView, {
-} from 'devextreme-react/ui/tree-view';
-
-import TabPanel, {
-} from 'devextreme-react/ui/tab-panel';
+import TreeView from 'devextreme-react/ui/tree-view';
+import TabPanel from 'devextreme-react/ui/tab-panel';
 
 function renderPanelItemTitle(item) {
-    return <span className='tab-panel-title'>{item.text}</span>;
+    return <span className={'tab-panel-title'}>{item.text}</span>;
 }
 
 function renderPanelItem(city) {
     return (
         <React.Fragment>
-            <img className='flag' src={city.flag} />
-            <div className='right-content'>
+            <img className={'flag'} src={city.flag} />
+            <div className={'right-content'}>
                 <div>
                     <b>{(city.capital) ? 'Capital. ' : ''}</b>{city.description}
                 </div>
-                <div className='stats'>
+                <div className={'stats'}>
                     <div>
                         <div>Population</div>
                         <div><b>{city.population} people</b></div>
@@ -519,9 +509,10 @@ export default class extends React.Component {
     }
 
     render() {
+        const countryData = this.state.countryData;
         return (
-            <div className='container'>
-                <div className='left-content'>
+            <div className={'container'}>
+                <div className={'left-content'}>
                     <TreeView
                         dataSource={continents}
                         selectionMode={'single'}
@@ -529,31 +520,31 @@ export default class extends React.Component {
                         onItemSelectionChanged={this.handleTreeViewSelectionChange}
                     />
                 </div>
-                <div className='right-content'>
-                    <div className='title-container'>
-                        <img className='flag' src={this.state.countryData.flag} />
+                <div className={'right-content'}>
+                    <div className={'title-container'}>
+                        <img className={'flag'} src={countryData.flag} />
                         <div>
-                            <div className='country-name'>{this.state.countryData.fullName}</div>
-                            <div>{this.state.countryData.description}</div>
+                            <div className={'country-name'}>{countryData.fullName}</div>
+                            <div>{countryData.description}</div>
                         </div>
                     </div>
 
-                    <div className='stats'>
+                    <div className={'stats'}>
                         <div>
-                            <div className='sub-title'>Area, km<sup>2</sup></div>
-                            <div className='stat-value'>{this.state.countryData.area}</div>
+                            <div className={'sub-title'}>Area, km<sup>2</sup></div>
+                            <div className={'stat-value'}>{countryData.area}</div>
                         </div>
                         <div>
-                            <div className='sub-title'>Population</div>
-                            <div className='stat-value'>{this.state.countryData.population}</div>
+                            <div className={'sub-title'}>Population</div>
+                            <div className={'stat-value'}>{countryData.population}</div>
                         </div>
                         <div>
-                            <div className='sub-title'>GDP, billion</div>
-                            <div className='stat-value'>{'$' + this.state.countryData.gdp}</div>
+                            <div className={'sub-title'}>GDP, billion</div>
+                            <div className={'stat-value'}>{'$' + countryData.gdp}</div>
                         </div>
                     </div>
 
-                    <div className='sub-title'>Largest cities</div>
+                    <div className={'sub-title'}>Largest cities</div>
 
                     <TabPanel
                         itemTitleRender={renderPanelItemTitle}

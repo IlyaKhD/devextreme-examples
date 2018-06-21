@@ -2034,7 +2034,7 @@ import TreeList, {
     Selection
 } from 'devextreme-react/ui/tree-list';
 
-const dataSource = {
+const dataSourceOptions = {
     store: tasks.map(function (task) {
         employees.forEach(function (employee) {
             if (task.Task_Assigned_Employee_ID === employee.ID) {
@@ -2089,7 +2089,7 @@ export default class extends React.Component {
     render() {
         return (
             <TreeList
-                dataSource={dataSource}
+                dataSource={dataSourceOptions}
                 expandedRowKeys={[1, 2]}
                 selectedRowKeys={[1, 29, 42]}
                 keyExpr={'Task_ID'}

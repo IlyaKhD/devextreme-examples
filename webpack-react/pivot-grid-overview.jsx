@@ -4533,11 +4533,13 @@ const dataSource = new PivotGridDataSource( {
     store: sales
 });
 
-const currencyFormatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0
-});
+const currencyFormatter = new Intl.NumberFormat(
+    'en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    }
+);
 
 function customizeTooltip(args) {
     const valueText = currencyFormatter.format(args.originalValue);
