@@ -2118,7 +2118,7 @@ export default class extends React.Component {
                 <Column
                     dataField={'Task_Priority'}
                     caption={'Priority'}
-                    lookup={statusLookup}
+                    lookup={priorityLookup}
                     visible={false}
                 />
                 <Column

@@ -16,7 +16,12 @@ import Chart, {
     ArgumentAxisLabel,
     CommonSeriesSettings,
     Legend,
+    Series,
     Tooltip,
+    ValueAxis,
+    ValueAxisConstantLine,
+    ValueAxisConstantLineLabel,
+    ValueAxisLabel
 } from 'devextreme-react/ui/chart';
 
 const data = complaintsData.sort(function(a, b) {
@@ -53,58 +58,48 @@ const customizeTooltip = function(info) {
     };
 };
 
-const valueAxis = [{
-    name: 'frequency',
-    position: 'left',
-    tickInterval: 300
-}, {
-    name: 'percentage',
-    position: 'right',
-    showZero: true,
-    label: {
-        customizeText: function(info) {
-            return info.valueText + '%';
-        }
-    },
-    constantLines: [{
-        value: 80,
-        color: '#fc3535',
-        dashStyle: 'dash',
-        width: 2,
-        label: { visible: false }
-    }],
-    tickInterval: 20,
-    valueMarginsEnabled: false
-}];
-
-const series = [{
-    type: 'bar',
-    valueField: 'count',
-    axis: 'frequency',
-    name: 'Complaints frequency',
-    color: '#fac29a'
-}, {
-    type: 'spline',
-    valueField: 'cumulativePercentage',
-    axis: 'percentage',
-    name: 'Cumulative percentage',
-    color: '#6b71c3'
-}];
+function customizePercentageText(info) {
+    return info.valueText + '%';
+}
 
 export default class extends React.Component {
 
     render() {
         return (
-            <Chart
-                palette={'Harmony Light'}
-                title={'Pizza Shop Complaints'}
-                dataSource={dataSource}
-                valueAxis={valueAxis}
-                series={series}
-            >
+            <Chart title={'Pizza Shop Complaints'} dataSource={dataSource} palette={'Harmony Light'} >
+
                 <ArgumentAxis>
                     <ArgumentAxisLabel overlappingBehavior='stagger' />
                 </ArgumentAxis>
+
+                <ValueAxis name={'frequency'} position={'left'} tickInterval={300} />
+                <ValueAxis
+                    name={'percentage'}
+                    position={'right'}
+                    tickInterval={20}
+                    showZero={true}
+                    valueMarginsEnabled={false}
+                >
+                    <ValueAxisLabel customizeText={customizePercentageText} />
+                    <ValueAxisConstantLine value={80} width={2} color={'#fc3535'} dashStyle={'dash'} >
+                        <ValueAxisConstantLineLabel visible={false} />
+                    </ValueAxisConstantLine>
+                </ValueAxis>
+
+                <Series
+                    name={'Complaints frequency'}
+                    valueField={'count'}
+                    axis={'frequency'}
+                    type={'bar'}
+                    color={'#fac29a'}
+                />
+                <Series
+                    name={'Cumulative percentage'}
+                    valueField={'cumulativePercentage'}
+                    axis={'percentage'}
+                    type={'spline'}
+                    color={'#6b71c3'}
+                />
 
                 <Tooltip
                     enabled={true}
