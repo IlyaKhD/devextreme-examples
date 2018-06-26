@@ -61,6 +61,8 @@ const onContentReady = function(e) {
     }
 };
 
+const pageSizes = [10, 25, 50, 100];
+
 export default class extends React.Component {
 
     render() {
@@ -100,7 +102,7 @@ export default class extends React.Component {
                 <Column dataField={'Channel'} dataType={'string'} />
                 <Column dataField={'Customer'} dataType={'string'} width={150} />
 
-                <Pager allowedPageSizes={[10, 25, 50, 100]} showPageSizeSelector={true} />
+                <Pager allowedPageSizes={pageSizes} showPageSizeSelector={true} />
                 <Paging defaultPageSize={10} />
 
                 <Template name={'discountCellTemplate'} render={discountCellTemplate} />

@@ -550,10 +550,10 @@ export default class extends React.Component {
                         itemTitleRender={renderPanelItemTitle}
                         itemRender={renderPanelItem}
                         selectedIndex={this.state.tabPanelIndex}
+                        onSelectionChanged={this.handleTabPanelSelectionChange}
                         dataSource={this.state.citiesData}
                         animationEnabled={true}
                         elementAttr={{ id: 'tabpanel' }}
-                        onSelectionChanged={this.handleTabPanelSelectionChange}
                     />
                 </div>
             </div>

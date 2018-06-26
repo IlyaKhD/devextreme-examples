@@ -2085,13 +2085,16 @@ const priorityLookup = {
     displayExpr: 'value'
 };
 
+const expandedRows = [1, 2];
+const selectedRows = [1, 29, 42];
+
 export default class extends React.Component {
     render() {
         return (
             <TreeList
                 dataSource={dataSourceOptions}
-                expandedRowKeys={[1, 2]}
-                selectedRowKeys={[1, 29, 42]}
+                defaultExpandedRowKeys={expandedRows}
+                defaultSelectedRowKeys={selectedRows}
                 keyExpr={'Task_ID'}
                 parentIdExpr={'Task_Parent_ID'}
             >

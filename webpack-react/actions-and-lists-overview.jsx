@@ -1240,13 +1240,17 @@ function renderTile(item) {
     );
 }
 
+const listAttrs = { class: 'list' };
+const tileViewAttrs = { class: 'tile' };
+
 export default class extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            currentHotel: data[0]
+            currentHotel: data[0],
+            selectedItemKeys: [data[0].Id]
         };
 
         this.handleListSelectionChange = this.handleListSelectionChange.bind(this);
@@ -1262,11 +1266,11 @@ export default class extends React.Component {
                         dataSource={dataSourceOptions}
                         grouped={true}
                         searchEnabled={true}
-                        selectedItemKeys={[currentHotel.Id]}
+                        selectedItemKeys={this.state.selectedItemKeys}
                         onSelectionChanged={this.handleListSelectionChange}
                         itemRender={renderListItem}
                         groupRender={renderListGroup}
-                        elementAttr={{ class: 'list' }}
+                        elementAttr={listAttrs}
                     />
                 </div>
 
@@ -1290,7 +1294,7 @@ export default class extends React.Component {
                         itemMargin={12}
                         noDataText={''}
                         itemRender={renderTile}
-                        elementAttr={{ class: 'tile' }}
+                        elementAttr={tileViewAttrs}
                     />
 
                     <div className={'address'}>{currentHotel.Postal_Code}, {currentHotel.Address}</div>
@@ -1301,8 +1305,10 @@ export default class extends React.Component {
     }
 
     handleListSelectionChange(e) {
+        const currentHotel = e.addedItems[0];
         this.setState({
-            currentHotel: e.addedItems[0]
+            currentHotel,
+            selectedItemKeys: [currentHotel.Id]
         });
     }
 }

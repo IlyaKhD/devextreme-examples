@@ -1,9 +1,3 @@
-// tslint:disable:only-arrow-functions
-// tslint:disable:object-literal-shorthand
-// tslint:disable:quotemark
-// tslint:disable:object-literal-key-quotes
-// tslint:disable:max-line-length
-
 // #region data.js
 const countriesGDP = {
     "Afghanistan": {
@@ -671,7 +665,6 @@ const countriesGDP = {
     }
 };
 // #endregion
-// tslint:enable:max-line-length
 
 import * as React from 'react';
 

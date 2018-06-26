@@ -59,8 +59,8 @@ export default class extends React.Component {
                             <div className={'value'}>
                                 <TextBox
                                     value={this.state.text}
-                                    maxLength={40}
                                     onValueChanged={this.handleTextChange}
+                                    maxLength={40}
                                     valueChangeEvent={'keyup'}
                                 />
                             </div>
@@ -70,8 +70,8 @@ export default class extends React.Component {
                             <div className={'value'}>
                                 <ColorBox
                                     value={this.state.color}
-                                    applyValueMode={'instantly'}
                                     onValueChanged={this.handleColorChange}
+                                    applyValueMode={'instantly'}
                                 />
                             </div>
                         </div>
@@ -83,11 +83,11 @@ export default class extends React.Component {
                             <div className={'value'}>
                                 <NumberBox
                                     value={this.state.width}
+                                    onValueChanged={this.handleWidthChange}
                                     showSpinButtons={true}
                                     max={700}
                                     min={70}
                                     format={'#0px'}
-                                    onValueChanged={this.handleWidthChange}
                                 />
                             </div>
                         </div>
@@ -96,11 +96,11 @@ export default class extends React.Component {
                             <div className={'value'}>
                                 <NumberBox
                                     value={this.state.height}
+                                    onValueChanged={this.handleHeightChange}
                                     showSpinButtons={true}
                                     max={700}
                                     min={70}
                                     format={'#0px'}
-                                    onValueChanged={this.handleHeightChange}
                                 />
                             </div>
                         </div>
@@ -112,11 +112,11 @@ export default class extends React.Component {
                             <div className={'value'}>
                                 <SelectBox
                                     value={this.state.transform}
+                                    onValueChanged={this.handleTransformChange}
                                     items={transformations}
                                     grouped={true}
                                     displayExpr={'name'}
                                     valueExpr={'value'}
-                                    onValueChanged={this.handleTransformChange}
                                 />
                             </div>
                         </div>
