@@ -218,7 +218,6 @@ const housesSource = [{
 ];
 
 // #endregion
-// tslint:enable:max-line-length
 
 import * as React from 'react';
 

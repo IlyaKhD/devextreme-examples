@@ -83,7 +83,6 @@ const data = [{
     endDate: new Date(2016, 7, 30, 11, 30)
 }];
 // #endregion
-// tslint:enable:max-line-length
 
 import * as React from 'react';
 
