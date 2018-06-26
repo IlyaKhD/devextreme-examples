@@ -800,7 +800,7 @@ export default class extends React.Component {
         return (
             <Map elementAttr={{ id: 'vector-map' }} bounds={mapBounds} onTooltipShown={onTooltipShown} >
                 <Layer
-                    name='areas'
+                    name={'areas'}
                     dataSource={mapsData.world}
                     colorGroups={colorGroups}
                     colorGroupingField={'total'}
@@ -814,7 +814,7 @@ export default class extends React.Component {
                 </Legend>
 
                 <Title text={'Nominal GDP'} >
-                    <Subtitle text='(in millions of US dollars)' />
+                    <Subtitle text={'(in millions of US dollars)'} />
                 </Title>
 
                 <Tooltip enabled={true} customizeTooltip={customizeTooltip} />

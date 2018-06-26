@@ -49,17 +49,17 @@ export default class extends React.Component {
     render() {
         const speedValue = this.state.speedValue;
         return (
-            <div id='gauge-demo'>
+            <div id={'gauge-demo'}>
 
-                <div id='gauge-container'>
-                    <div className='left-section'>
+                <div id={'gauge-container'}>
+                    <div className={'left-section'}>
                         <Indicator value={speedValue / 2} inverted={false} startAngle={180} endAngle={90} />
                         <Indicator value={speedValue / 2} inverted={true} startAngle={-90} endAngle={-180} />
                     </div>
 
-                    <div className='center-section'>
+                    <div className={'center-section'}>
 
-                        <div className='speed-value'>
+                        <div className={'speed-value'}>
                             <span>{speedValue}</span>
                         </div>
 
@@ -98,7 +98,7 @@ export default class extends React.Component {
                         </LinearGauge>
                     </div>
 
-                    <div className='right-section'>
+                    <div className={'right-section'}>
                         <Indicator value={speedValue / 2} inverted={true} startAngle={90} endAngle={0} />
                         <Indicator value={speedValue / 2} inverted={false} startAngle={0} endAngle={-90} />
                     </div>
