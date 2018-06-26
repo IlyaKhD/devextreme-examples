@@ -256,7 +256,7 @@ class House extends React.PureComponent {
         const house = this.props.house;
         return (
             <div>
-                <div onClick={this.show} className='item-content'>
+                <div onClick={this.show} className={'item-content'}>
 
                     <img src={house.Image} />
 
@@ -273,8 +273,8 @@ class House extends React.PureComponent {
                         </div>
                     </div>
                     <Popover
-                        showEvent='mouseenter'
-                        hideEvent='mouseleave'
+                        showEvent={'mouseenter'}
+                        hideEvent={'mouseleave'}
                         position={position}
                         target={'#house' + house.ID}
                         width={260}
@@ -313,8 +313,7 @@ export default class extends React.Component {
         super(props);
 
         this.state = {
-            currentHouse: housesSource[0],
-            currentHouseIsFavorite: housesSource[0].Favorite
+            currentHouse: housesSource[0]
         };
 
         this.renderPopup = this.renderPopup.bind(this);
@@ -325,7 +324,7 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div className='images'>
+            <div className={'images'}>
                 {housesSource.map((h) => <House house={h} show={this.showHouse} key={h.ID} />)}
                 <Popup
                     width={660}
@@ -349,8 +348,8 @@ export default class extends React.Component {
                 <div className={'large-text'}>{currencyFormatter.format(currentHouse.Price)}</div>
                 <div className={'opacity'}>{currentHouse.Address}, {currentHouse.City}, {currentHouse.State}</div>
                 <Button
-                    icon='favorites'
-                    text={this.state.currentHouseIsFavorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES}
+                    icon={'favorites'}
+                    text={currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES}
                     width={210}
                     height={44}
                     elementAttr={favButtonAttrs}
@@ -368,7 +367,6 @@ export default class extends React.Component {
     showHouse(house) {
         this.setState({
             currentHouse: house,
-            currentHouseIsFavorite: house.Favorite,
             popupVisible: true
         });
     }
@@ -386,7 +384,7 @@ export default class extends React.Component {
 
         this.renderPopup = this.renderPopup.bind(this);
         this.setState({
-            currentHouseIsFavorite: favoriteState
+            currentHouse: { ...currentHouse }
         });
 
         notify({
