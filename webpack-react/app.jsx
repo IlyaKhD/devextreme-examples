@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 import "devextreme/dist/css/dx.common.css";
 import "devextreme/dist/css/dx.light.compact.css";
 
-import Overview from "./maps-overview";
+import Overview from "./dialogs-and-notifications-overview";
 
 ReactDOM.render(
   <div>
