@@ -378,21 +378,18 @@ export default class extends React.Component {
 
     changeFavoriteState() {
         const currentHouse = this.state.currentHouse;
-        const favoriteState = !currentHouse.Favorite;
-        currentHouse.Favorite = favoriteState;
+        currentHouse.Favorite = !currentHouse.Favorite;
 
         this.renderPopup = this.renderPopup.bind(this);
         this.setState({
-            currentHouse: { ...currentHouse }
-        });
-
-        notify({
-            message: 'This item has been '
-                + (favoriteState ? 'added to' : 'removed from')
-                + ' the Favorites list!',
-            width: 450
-        },
-            favoriteState ? 'success' : 'error', 2000
-        );
+            currentHouse
+        }, () => notify({
+                message: 'This item has been '
+                    + (currentHouse.Favorite ? 'added to' : 'removed from')
+                    + ' the Favorites list!',
+                width: 450
+            },
+            currentHouse.Favorite ? 'success' : 'error', 2000
+        ));
     }
 }
